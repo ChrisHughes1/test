@@ -3,8 +3,17 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+// Lab 3 - Task 1
 Route::get('/', function () {
-    return view('welcome');
+    return view('home_page');
+});
+
+Route::get('/tasks', function () {
+    return view('tasks');
+});
+
+Route::get('/task/{id}', function ($id) {
+    return view('task', ['id' => $id]);
 });
 
 Route::get('/dashboard', function () {
@@ -18,3 +27,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
