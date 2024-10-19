@@ -16,6 +16,18 @@ Route::get('/task/{id}', function ($id) {
     return view('task', ['id' => $id]);
 });
 
+Route::get('/projects', function () {
+    return view('projects');
+});
+
+Route::get('/projects/{id}', function ($id) {
+    return view('project', ['id' => $id]);
+});
+
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

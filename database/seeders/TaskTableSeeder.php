@@ -19,6 +19,7 @@ class TaskTableSeeder extends Seeder
         $a->status = 'pending';
         $a->due_date = '2024-10-09';
         $a->assigned_to = 'John Doe';
+        $a->project_id = 1;
         $a->save();
 
         Task::factory()->count(50)->create();
