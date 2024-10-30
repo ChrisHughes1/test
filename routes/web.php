@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,12 @@ Route::get('/projects', function () {
 Route::get('/projects/{id}', function ($id) {
     return view('project', ['id' => $id]);
 });
+
+// Lab 5
+
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+
 
 
 
