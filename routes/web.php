@@ -1,37 +1,36 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // Lab 3 - Task 1
-Route::get('/', function () {
-    return view('home_page');
-});
 
-Route::get('/tasks', function () {
-    return view('tasks');
-});
+// Route::get('/', function () {
+//     return view('home_page');
+// });
 
-Route::get('/task/{id}', function ($id) {
-    return view('task', ['id' => $id]);
-});
+// Route::get('/tasks', function () {
+//     return view('tasks');
+// });
 
-Route::get('/projects', function () {
-    return view('projects');
-});
-
-Route::get('/projects/{id}', function ($id) {
-    return view('project', ['id' => $id]);
-});
+// Route::get('/task/{id}', function ($id) {
+//     return view('task', ['id' => $id]);
+// });
 
 // Lab 5
 
+
+Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
+Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
 
+Route::resource('tasks', TaskController::class);
+Route::get('/create-task', [TaskController::class, 'create'])->name('tasks.create');
 
-
+Route::delete('projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
 
 
